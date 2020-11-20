@@ -118,6 +118,28 @@
 
         // todo: 將取回的資料顯示在網頁上...
         console.log(stops);
+        
+        // 畫表格
+        const render = function (stops) {
+          let htmlStr = '';
+
+          for (idx in stops) {
+            const { sno, sna, sarea, sbi, tot, mday } = stops[idx];
+            htmlStr += `<tr>
+              <td>${sno}</td>
+              <td>${sna}</td>
+              <td>${sarea}</td>
+              <td>${sbi}</td>
+              <td>${tot}</td>
+              <td>${timeFormat(mday)}</td>
+            </tr>`;
+          }
+
+          $('#you-bike-tbl tbody').empty();
+          $('#you-bike-tbl tbody').html(htmlStr);
+        };
+
+        render(stops);
 
       });
 
