@@ -114,13 +114,28 @@
         $('#search').on('click', function(e) {
           // code here...
           const keyword = $('#keyword').val();
-          const list = stops.filter(d =>  d.sna.includes(keyword));
+          let list = stops.filter(d =>  d.sna.includes(keyword));
+          
+          const area = $('#areas').val();
+          if(area !== '') {
+            list = list.filter(d => d.sarea === area);
+          }
           render(list);
         });
 
         // todo 3: 從 list 取出全台北 12 行政區(不重複)，並
         // 3-1. 填入 select #areas 選項
         // 3-2. 加入至篩選功能
+
+        const areas = [];
+
+        for (idx in stops) {
+          const { sarea } = stops[idx];
+          if(!areas.includes(sarea)) {
+            areas.push(sarea);
+            $('#areas').append(`<option value="${sarea}">${sarea}</option>`);
+          }
+        }
 
 
       });
