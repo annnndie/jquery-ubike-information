@@ -20,6 +20,11 @@
   <h1>YouBike 臺北市公共自行車即時資訊</h1>
 
   <form class="form-inline">
+
+    <select class="form-control" id="areas">
+      <option value="">請選擇區域</option>
+    </select>
+
     <input type="text" id="keyword" class="form-control mx-sm-3" placeholder="請輸入關鍵字">
     <button type="button" id="search" class="btn btn-primary">Submit</button>
   </form>
@@ -35,49 +40,7 @@
         <th>資料更新時間</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>0001</td>
-        <td>捷運市政府站(3號出口)</td>
-        <td>信義區</td>
-        <td>21</td>
-        <td>180</td>
-        <td>2020/11/20 12:00:00</td>
-      </tr>
-      <tr>
-        <td>0002</td>
-        <td>捷運國父紀念館站(2號出口)</td>
-        <td>大安區</td>
-        <td>32</td>
-        <td>48</td>
-        <td>2020/11/20 12:00:00</td>
-      </tr>
-      <tr>
-        <td>0003</td>
-        <td>台北市政府</td>
-        <td>信義區</td>
-        <td>18</td>
-        <td>40</td>
-        <td>2020/11/20 12:00:00</td>
-      </tr>
-      <tr>
-        <td>0004</td>
-        <td>市民廣場</td>
-        <td>信義區</td>
-        <td>33</td>
-        <td>60</td>
-        <td>2020/11/20 12:00:00</td>
-      </tr>
-      <tr>
-        <td>0005</td>
-        <td>興雅國中</td>
-        <td>信義區</td>
-        <td>31</td>
-        <td>60</td>
-        <td>2020/11/20 12:00:00</td>
-      </tr>
-    </tbody>
-
+    <tbody></tbody>
   </table>
 
 
@@ -154,6 +117,11 @@
           const list = stops.filter(d =>  d.sna.includes(keyword));
           render(list);
         });
+
+        // todo 3: 從 list 取出全台北 12 行政區(不重複)，並
+        // 3-1. 填入 select #areas 選項
+        // 3-2. 加入至篩選功能
+
 
       });
 
