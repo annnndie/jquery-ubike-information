@@ -110,9 +110,14 @@
     }
 
     $.get('https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz',
-      function (data) {
+      function (data) {        
+        // 將資料轉為 JSON
+        const { retVal } = JSON.parse(data);
+        // 將回傳值轉為陣列
+        const stops = Object.keys(retVal).map(key => retVal[key]);
+
         // todo: 將取回的資料顯示在網頁上...
-        console.log(data);
+        console.log(stops);
 
       });
 
