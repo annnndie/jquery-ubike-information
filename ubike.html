@@ -150,8 +150,9 @@
         // todo 2: 加入關鍵字搜尋功能
         $('#search').on('click', function(e) {
           // code here...
-          
-
+          const keyword = $('#keyword').val();
+          const list = stops.filter(d =>  d.sna.includes(keyword));
+          render(list);
         });
 
       });
